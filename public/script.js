@@ -1,21 +1,10 @@
-const username = $('.username')
-const message = $('.message')
+import {sendMessage} from './users/sendMessage.js'
 
-const postData = (path, data) => {
-	$.ajax({
-		contentType: 'application/json',
-		data: JSON.stringify(data),
-		dataType: 'json',
-		processData: false,
-		type: 'POST',
-		url: `https://nodereplit.nathanmartinez2.repl.co${path}`
-	});
-}
+const username = document.querySelector('.username')
+const message = document.querySelector('.message')
+const submitButton = document.querySelector('button')
 
-$('button').click((e) => {
+submitButton.addEventListener('click', (e) => {
 	e.preventDefault()
-	postData('/users',{
-		username: username.val(),
-		message: message.val()
-	})
+	sendMessage({username: 'test', message: 'Hello'})
 })
